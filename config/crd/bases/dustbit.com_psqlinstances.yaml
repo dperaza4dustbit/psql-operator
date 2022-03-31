@@ -1,0 +1,66 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: psqlinstances.dustbit.com
+spec:
+  group: dustbit.com
+  names:
+    kind: PSQLInstance
+    listKind: PSQLInstanceList
+    plural: psqlinstances
+    singular: psqlinstance
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: PSQLInstance is the Schema for the psqlinstances API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: PSQLInstanceSpec defines the desired state of PSQLInstance
+            properties:
+              databasename:
+                description: DatabaseName is the database name of the PSQLInstance.
+                type: string
+              username:
+                description: UserName is the user name of the PSQLInstance.
+                type: string
+            type: object
+          status:
+            description: PSQLInstanceStatus defines the observed state of PSQLInstance
+            properties:
+              binding:
+                description: Binding is the object pointing to binding secret
+                properties:
+                  name:
+                    description: Name is the name of the binding secret
+                    type: string
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

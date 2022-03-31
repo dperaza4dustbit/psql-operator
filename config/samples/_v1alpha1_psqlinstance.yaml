@@ -1,0 +1,7 @@
+apiVersion: dustbit.com/v1alpha1
+kind: PSQLInstance
+metadata:
+  name: psqlinstance-psqldavp
+spec:
+  databasename: psqldavp
+  username: dperaza
